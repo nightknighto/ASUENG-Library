@@ -1,0 +1,101 @@
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    margin: 0;
+    padding-bottom: 6rem;
+    min-height: 100%;
+    font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+$xs: 0;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+$headerHeightSM: 100px;
+$headerHeightLG: 10vh;
+
+$footerHeightSM: 100px;
+$footerHeightLG: 100px;
+$footerMarginTopSM: 30px;
+$footerMarginTopLG: 30px;
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.mainContainer {
+    margin: 0 auto;
+    padding-top: 64px;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+}
+
+.footer {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+    
+.mainPage {}
+
+// small screen
+@media (max-width: $md) {
+    .MainPageButtons {
+        height: 70px
+    }
+
+    .mainPage {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .header {
+        height: $headerHeightSM;
+    }
+
+    .footer {
+        height: $footerHeightSM;
+        margin-top: $footerMarginTopSM;
+    }
+}
+
+// large screen
+@media (min-width: $md) {
+    .MainPageButtons {
+        height: 400px;
+        &.freshmen {
+            height: 200px;
+        }
+    }
+
+    .mainPage {
+        padding-top: 30px;
+        padding-bottom: 30px;
+    }
+
+    .header {
+        height: $headerHeightLG;
+    }
+
+    .footer {
+        height: $footerHeightLG;
+        margin-top: $footerMarginTopLG;
+    }
+}
+
+    
+        
+    
