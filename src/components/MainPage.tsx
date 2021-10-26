@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { Button, Col, Container, Row } from "react-bootstrap"
-import Stack from 'react-bootstrap/Stack'
+import { Col, Container, Row } from "react-bootstrap"
+import { Link } from "react-router-dom"
 
 export default function MainPage() {
     const [dd, sss] = useState(true)
@@ -9,19 +9,19 @@ export default function MainPage() {
             <Container fluid className='mainPage'>
                 <Row className="mt-1">
                     <Col xs={12} className="d-grid mt-4">
-                        <Button className="MainPageButtons freshmen" variant="warning" size='lg'>Freshmen</Button>
+                        <Link to="/fresh" className="MainPageButtons freshmen border border-4 border-warning" />
                     </Col>
                     <Col xs={12} sm={6}  md={3} className="d-grid mt-4">
-                        <Button className="MainPageButtons" variant="warning" size='lg'>Electrical</Button>
+                        <Link to="/node_modules" className="MainPageButtons electrical border border-4 border-warning" />
                     </Col>
                     <Col xs={12} sm={6}  md={3} className="d-grid mt-4">
-                        <Button className="MainPageButtons" variant="warning" size='lg'>Mechanical</Button>
+                        <Link to="/mech" className="MainPageButtons mechanical border border-4 border-warning" />
                     </Col>
                     <Col xs={12} sm={6}  md={3} className="d-grid mt-4">
-                        <Button className="MainPageButtons" variant="warning" size='lg'>Architecture</Button>
+                        <Link to="/arch" className="MainPageButtons architecture border border-4 border-warning" />
                     </Col>
                     <Col xs={12} sm={6}  md={3} className="d-grid mt-4">
-                        <Button className="MainPageButtons" variant="warning" size='lg'>Civil</Button>
+                        <Link to="/civil" className="MainPageButtons civil border border-4 border-warning" />
                     </Col>
                 </Row>
             </Container>

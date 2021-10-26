@@ -9,6 +9,13 @@ body {
     padding-bottom: 6rem;
     min-height: 100%;
     font-family: "Helvetica Neue", Arial, sans-serif;
+    background-color: #181A1B !important;
+    color: white !important;
+}
+
+a {
+    color: inherit;
+    text-decoration: none !important;
 }
 
 $xs: 0;
@@ -18,13 +25,27 @@ $lg: 992px;
 $xl: 1200px;
 $xxl: 1400px;
 
-$headerHeightSM: 100px;
-$headerHeightLG: 10vh;
+$freshmenImage: url('https://previews.123rf.com/images/michaeljayfoto/michaeljayfoto1702/michaeljayfoto170200180/71179900-word-freshman-as-text-in-chalk-on-green-board-education-school-concept.jpg');
+$electricalImage: url('https://i.ytimg.com/vi/6cEkZ-0uFPw/maxresdefault.jpg');
+$mechanicalImage: url('https://www.srit.ac.in/departments/mech/ME.png');
+$architectureImage: url('https://thumbs.dreamstime.com/b/architecture-d-text-floor-plan-design-rendering-image-73120877.jpg');
+$civilImage: url('https://www.chitkara.edu.in/wp-content/uploads/2020/04/civil.jpg');
+
+$headerHeightSM: 'initial';
+$headerHeightLG: 70px;
 
 $footerHeightSM: 100px;
 $footerHeightLG: 100px;
 $footerMarginTopSM: 30px;
 $footerMarginTopLG: 30px;
+
+$mainPagePaddingTopSM: 0px;
+$mainPagePaddingTopLG: 10px;
+$mainPagePaddingBottomSM: 30px;
+$mainPagePaddingBottomLG: 30px;
+
+$logoHeightSM: 50px;
+$logoHeightLG: $headerHeightLG;
 
 *,
 *:before,
@@ -38,8 +59,6 @@ $footerMarginTopLG: 30px;
 }
 
 .header {
-    position: fixed;
-    top: 0;
 }
 
 .footer {
@@ -49,7 +68,43 @@ $footerMarginTopLG: 30px;
     left: 0;
 }
     
-.mainPage {}
+.mainPage {
+}
+
+.freshmen {
+    background-image: $freshmenImage;
+    background-size: 100% 100%;
+}
+
+.electrical {
+    background-image: $electricalImage;
+    background-size: 100% 100%;
+}
+
+.mechanical {
+    background-image: $mechanicalImage;
+    background-size: 100% 100%;
+}
+
+.architecture {
+    background-image: $architectureImage;
+    background-size: 100% 100%;
+}
+
+.civil {
+    background-image: $civilImage;
+    background-size: 100% 100%;
+}
+
+.MainPageButtons:hover {
+    filter: brightness(50%);
+}
+
+.ObjectCardTitle {
+    background-color: white;
+    font-weight: 600;
+    word-wrap: break-word;
+}
 
 // small screen
 @media (max-width: $md) {
@@ -58,8 +113,8 @@ $footerMarginTopLG: 30px;
     }
 
     .mainPage {
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: $mainPagePaddingTopSM;
+        padding-bottom: $mainPagePaddingBottomSM;
     }
 
     .header {
@@ -70,6 +125,17 @@ $footerMarginTopLG: 30px;
         height: $footerHeightSM;
         margin-top: $footerMarginTopSM;
     }
+
+    .logo {
+        height: $logoHeightSM;
+    }
+    
+    @media (max-width: 330px) {
+        .logo {
+            display: none;
+        }
+    }
+
 }
 
 // large screen
@@ -82,19 +148,38 @@ $footerMarginTopLG: 30px;
     }
 
     .mainPage {
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: $mainPagePaddingTopLG;
+        padding-bottom: $mainPagePaddingBottomLG;
     }
 
-    .header {
-        height: $headerHeightLG;
+    @media (min-width: $lg) {
+        .header {
+            height: $headerHeightLG;
+        }
     }
 
     .footer {
         height: $footerHeightLG;
         margin-top: $footerMarginTopLG;
     }
+
+    .logo {
+        height: $logoHeightLG
+    }
+    
+    //medium screen
+    @media (max-width: $lg) {
+        
+        .header {
+            height: 'initial';
+        }
+
+        .logo {
+            height: $logoHeightSM
+        }
+    }
 }
+
 
     
         
