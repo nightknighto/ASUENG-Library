@@ -17,7 +17,10 @@ export default function ObjectCard (props: ICardProps) {
     const jsn = props.json
     const name = jsn.name;
 
-    const {pathname: url} = useLocation()
+    let {pathname: url} = useLocation()
+
+    if(url.slice(url.length-1) === '/') url += jsn.name;
+    else url += '/'+jsn.name;
 
     const icon = () => {
         if(jsn.children) {
@@ -30,9 +33,9 @@ export default function ObjectCard (props: ICardProps) {
     return (
         <>
         <Col xs={6} sm={3} md={2} lg={1} className={props.className? props.className : ""}>
-            <Link to={`${url}/${jsn.name}`} target={jsn.children? "" : "_blank"}>
+            <Link to={`${url}`} target={jsn.children? "" : "_blank"}>
                 <Image src={icon()} fluid/>
-                <div className="ObjectCardTitle rounded ps-1 mt-1">
+                <div className="ObjectCardTitle rounded ps-1 mt-1 bg-light link-dark">
                     {jsn.name.replace(/_/g, ' ')}
                 </div>
             </Link>

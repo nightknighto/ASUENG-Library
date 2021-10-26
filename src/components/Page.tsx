@@ -1,8 +1,8 @@
 import { Component } from "react";
-import { Container, Row } from "react-bootstrap";
+import { Breadcrumb, BreadcrumbItem, Container, Row } from "react-bootstrap";
 
 import * as React from 'react';
-import { Redirect, useLocation, useParams, useRouteMatch } from "react-router-dom";
+import { Link, Redirect, useLocation, useParams, useRouteMatch } from "react-router-dom";
 import { useObjectContext } from "../ObjectContext";
 import ObjectCard from "./Card";
 
@@ -76,9 +76,35 @@ export default function Page (props: IPageProps) {
     return <div>Nothing Found</div>;
   }
 
+  const makeBreadCrumbs = () => {
+
+    const prepareHref = (par: string) => {
+      let url = '/'
+      for(let i = 0; i <= params.indexOf(par); i++) {
+        if(params[i].slice(params[i].length-2, 1) === '/') url += params[i];
+        else url += params[i]+'/';
+      }
+      return url
+    }
+
+    return (
+      <Breadcrumb>
+        {params.map( (par) => (
+          <Breadcrumb.Item>
+            <Link to={prepareHref(par)} className=" link-dark">{par}</Link>
+          </Breadcrumb.Item>
+        ))}
+      </Breadcrumb>
+    )
+  }
+
   return (
     <div>
       <Container fluid>
+        {/*@ts-ignore */}
+        <Row className="breadcrumbCustom mt-3 pt-2">
+          {makeBreadCrumbs()}
+        </Row>
         <Row className="mt-3 mb-3">        
           {processPath()}
         </Row>
