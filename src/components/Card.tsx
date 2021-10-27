@@ -15,7 +15,6 @@ export interface ICardProps {
 
 export default function ObjectCard (props: ICardProps) {
     const jsn = props.json
-    const name = jsn.name;
 
     let {pathname: url} = useLocation()
 
@@ -30,20 +29,31 @@ export default function ObjectCard (props: ICardProps) {
         }
     }
 
-    return (
-        <>
-        <Col xs={6} sm={3} md={2} lg={1} className={props.className? props.className : ""}>
-            <Link to={`${url}`} target={jsn.children? "" : "_blank"}>
-                <Image src={icon()} fluid/>
-                <div className="ObjectCardTitle rounded ps-1 mt-1 bg-light link-dark">
-                    {jsn.name.replace(/_/g, ' ')}
-                </div>
-            </Link>
-        </Col>
-
-        {/* <Route path={`${path}/:id`}>
-            <Page />
-        </Route> */}
-        </>
-    );
+    if(jsn.children) {
+        return (
+            <>
+            <Col xs={6} sm={3} md={2} lg={1} className={props.className? props.className : ""}>
+                <Link to={url}>
+                    <Image src={icon()} fluid/>
+                    <div className="ObjectCardTitle rounded ps-1 mt-1 bg-light link-dark">
+                        {jsn.name.replace(/_/g, ' ')}
+                    </div>
+                </Link>
+            </Col>
+            </>
+        );
+    } else {
+        return (
+            <>
+            <Col xs={6} sm={3} md={2} lg={1} className={props.className? props.className : ""}>
+                <a href={jsn.link} target={"_blank"}>
+                    <Image src={icon()} fluid/>
+                    <div className="ObjectCardTitle rounded ps-1 mt-1 bg-light link-dark">
+                        {jsn.name.replace(/_/g, ' ')}
+                    </div>
+                </a>
+            </Col>
+            </>
+        );
+    }
 }

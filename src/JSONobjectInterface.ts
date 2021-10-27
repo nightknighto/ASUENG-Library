@@ -1,5 +1,5 @@
 export interface JSONobject {
     name: string;
-    path: string;
+    link?: string;
     children?: JSONobject[] | undefined
 }
