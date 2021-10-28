@@ -54,9 +54,7 @@ export default function Page (props: IPageProps) {
       <Row className="breadcrumbCustom mt-3 pt-2">
         <BreadCrumbComp URLparams={URLparams}/>
       </Row>
-      <Row className="mt-3 mb-3"> 
         <CardLayout Folder={processPath()} URLparams={URLparams}/>
-      </Row>
     </Container>
   );
 }
