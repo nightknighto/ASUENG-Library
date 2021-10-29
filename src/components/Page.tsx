@@ -101,7 +101,6 @@ export default function Page (props: IPageProps) {
   return (
     <div>
       <Container fluid>
-        {/*@ts-ignore */}
         <Row className="breadcrumbCustom mt-3 pt-2">
           {makeBreadCrumbs()}
         </Row>
