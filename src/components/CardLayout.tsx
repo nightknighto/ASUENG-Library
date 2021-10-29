@@ -53,6 +53,15 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
             return <ObjectCard className="mb-5" key={js.name} json={js} />
         })
     }
+
+    let reversedFilesPerYear = []
+    for(let i = 0; i < 10; i++) {
+        if(filesPerYear[25 - i])
+            reversedFilesPerYear[i] = filesPerYear[25 - i];
+    }
+
+    if(unspecifiedYear.length > 0)
+        reversedFilesPerYear[26] = unspecifiedYear
     
     if(filesPerYear.length == 1 && filesPerYear[0]) {
         return (
@@ -66,9 +75,9 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
 
     else return (
         <>
-        {filesPerYear.reverse().map( (filesArray, i) => (
+        {reversedFilesPerYear.map( (filesArray, i) => (
             <Row className="ps-2 pe-2">
-                <Col className="bg-info btn-info mb-3 breadcrumb rounded-pill" xs={12}>{filesArray === unspecifiedYear? "Unspecified Year" : `Year 20${20 - filesPerYear.indexOf(filesArray)}`}</Col>
+                <Col className="bg-info btn-info mb-3 breadcrumb rounded-pill" xs={12}>{filesArray === unspecifiedYear? "Unspecified Year" : `Year 20${filesPerYear.indexOf(filesArray)}`}</Col>
                 {filesArray}
             </Row>
         ))}
