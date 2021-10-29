@@ -9,7 +9,7 @@ export default function Header() {
             <Navbar collapseOnSelect className='header' fixed='top' expand="lg" bg="dark" variant="dark">
                 <Container fluid>
                     <Link to='/'>
-                    <Navbar.Brand href="#home" className='fs-3 pe-3'>
+                    <Navbar.Brand href="#home" className='fs-4 pe-3 text-warning'>
                         <Image src={logo} className='logo' />
                         {'ASUENG Library'}
                     </Navbar.Brand>

@@ -9,6 +9,7 @@ interface I_CardLayout {
     URLparams: string[]
 }
 
+//sorts objects based on whether they are folders or files
 function sortFoldersnFiles(files: JSONobject[]) {
     files.sort( (a,b) => {
         if(a.children && b.children) return 0;
@@ -18,6 +19,7 @@ function sortFoldersnFiles(files: JSONobject[]) {
 
     return files
 }
+
 
 export default function CardLayout({Folder, URLparams}: I_CardLayout) {
 
@@ -30,7 +32,6 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
         return <Redirect to={`/${newURL}`} />
     }
 
-    //sorts objects based on whether they are folders or files
     const unspecifiedYear = sortFoldersnFiles([...Folder.children].filter( file => (!file.date)))
         .map( js => {
             return <ObjectCard className="mb-5" key={js.name} json={js} />
@@ -41,7 +42,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
     if (unspecifiedYear.length > 0) filesPerYear[0] = unspecifiedYear;
     
     //fills the index corresponding to the year.
-    for(let i = 19; i < 22; i++) {
+    for(let i = 19; i < 25; i++) {
         if (Folder.children.filter( file => (file.date && file.date == i+'')).length <= 0) continue;
 
         filesPerYear[i] = Folder.children.filter( file => (file.date && file.date == i+''))
@@ -56,7 +57,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
     if(filesPerYear.length == 1 && filesPerYear[0]) {
         return (
             <>
-            <Row>
+            <Row className="ps-2 pe-2">
                 {unspecifiedYear}
             </Row>
             </>
@@ -66,8 +67,8 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
     else return (
         <>
         {filesPerYear.reverse().map( (filesArray, i) => (
-            <Row>
-                <Col className="bg-info btn-info mb-2" xs={12}>{filesArray === unspecifiedYear? "Unspecified Year" : `Year 20${20 - filesPerYear.indexOf(filesArray)}`}</Col>
+            <Row className="ps-2 pe-2">
+                <Col className="bg-info btn-info mb-3 breadcrumb rounded-pill" xs={12}>{filesArray === unspecifiedYear? "Unspecified Year" : `Year 20${20 - filesPerYear.indexOf(filesArray)}`}</Col>
                 {filesArray}
             </Row>
         ))}

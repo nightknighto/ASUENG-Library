@@ -66,6 +66,11 @@ a {
           filter: brightness(50%);
 }
 
+.foldernfilesButtons:hover {
+  -webkit-filter: brightness(60%);
+          filter: brightness(60%);
+}
+
 .ObjectCardTitle {
   font-weight: 600;
   word-wrap: break-word;
