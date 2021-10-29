@@ -12,7 +12,7 @@ export function ObjectContextProvider({children}) {
     const [object, setObject] = useState(null)
 
     const val: I_myObj = {
-        objects: JSON.parse(JSON.stringify(jsonFile)),
+        dataObjects: JSON.parse(JSON.stringify(jsonFile)),
         setObject: setObject
     }
     
@@ -24,6 +24,6 @@ export function ObjectContextProvider({children}) {
 }
 
 interface I_myObj {
-    objects: JSONobject[];
+    dataObjects: JSONobject[];
     setObject: (object) => void;
 }
