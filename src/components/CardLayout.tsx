@@ -1,4 +1,4 @@
-import { Col, Row } from "react-bootstrap";
+import { Alert, Col, Row } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { JSONobject } from "../JSONobjectInterface";
 import ObjectCard from "./Card";
@@ -32,20 +32,27 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
         return <Redirect to={`/${newURL}`} />
     }
 
-    const unspecifiedYear = sortFoldersnFiles([...Folder.children].filter( file => (!file.date)))
+    const unspecifiedYear = sortFoldersnFiles([...Folder.children].filter( file => (!file.note && !file.date)))
         .map( js => {
             return <ObjectCard className="mb-5" key={js.name} json={js} />
         })
 
     let filesPerYear = []
+    let filesNotesPerYear = []
+    let allNotes = []
+    
+    allNotes = Folder.children.filter( file => (file.note))
 
     if (unspecifiedYear.length > 0) filesPerYear[0] = unspecifiedYear;
+
+    filesNotesPerYear[0] = allNotes.filter( file => !file.date)
     
     //fills the index corresponding to the year.
     for(let i = 19; i < 25; i++) {
         if (Folder.children.filter( file => (file.date && file.date == i+'')).length <= 0) continue;
 
-        filesPerYear[i] = Folder.children.filter( file => (file.date && file.date == i+''))
+        filesPerYear[i] = Folder.children.filter( file => (!file.note && file.date && file.date == i+''))
+        filesNotesPerYear[i] = allNotes.filter( file => (file.date && file.date == i+''))
 
         sortFoldersnFiles(filesPerYear[i])
 
@@ -54,21 +61,33 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
         })
     }
     
-    if(filesPerYear.length == 1 && filesPerYear[0]) {
-        return (
-            <>
-            <Row className="ps-2 pe-2">
-                {unspecifiedYear}
-            </Row>
-            </>
-        )
-    }
+    // if(filesPerYear.length == 1 && filesPerYear[0]) {
+    //     return (
+    //         <>
+    //         <Row className="ps-2 pe-2">
+    //             {unspecifiedYear}
+    //         </Row>
+    //         </>
+    //     )
+    // }
 
-    else return (
+     return (
         <>
         {filesPerYear.reverse().map( (filesArray, i) => (
             <Row className="ps-2 pe-2">
-                <Col className="bg-info btn-info mb-3 breadcrumb rounded-pill" xs={12}>{filesArray === unspecifiedYear? "Unspecified Year" : `Year 20${20 - filesPerYear.indexOf(filesArray)}`}</Col>
+                {filesNotesPerYear[i]?.length === 0? null: 
+                    filesNotesPerYear[0].map( file => (
+                        <Alert variant='warning'>
+                            {file.note}
+                        </Alert>
+                    ))    
+                }
+                {filesPerYear.length == 1 && filesPerYear[0]? 
+                    null : 
+                    <Col className="bg-info btn-info mb-3 breadcrumb rounded-pill" xs={12}>
+                        {filesArray === unspecifiedYear? "Unspecified Year" : `Year 20${20 - filesPerYear.indexOf(filesArray)}`}
+                    </Col>
+                }
                 {filesArray}
             </Row>
         ))}

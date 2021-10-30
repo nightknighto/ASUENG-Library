@@ -3,4 +3,5 @@ export interface JSONobject {
     link?: string;
     children?: JSONobject[] | undefined
     date?: string;
+    note?: string;
 }
