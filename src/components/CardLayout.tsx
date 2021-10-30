@@ -109,6 +109,13 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
                 {filesArray}
             </Row>
         ))}
+        {Folder.source? 
+         <Alert variant='secondary'>
+            <strong className="text-primary">Source:</strong>
+            {Folder.source.map( (link, i) => (
+                <a href={link} target='_blank' className='pe-3 ps-3'>{`link ${i+1}`}</a>
+            ))}
+        </Alert> : null}
         </>
     )
     // return (
