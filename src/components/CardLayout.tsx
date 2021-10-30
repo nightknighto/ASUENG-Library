@@ -63,8 +63,9 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
 
     let reversedFilesPerYear = []
     for(let i = 0; i < 10; i++) {
-        if(filesPerYear[25 - i])
+        if(filesPerYear[25 - i]) {
             reversedFilesPerYear[i] = filesPerYear[25 - i];
+        }
     }
 
     if(unspecifiedYear.length > 0)
@@ -82,20 +83,28 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
 
      return (
         <>
-        {reversedFilesPerYear.map( (filesArray, i) => (
+        {filesNotesPerYear[0]?.length === 0? null: 
+            filesNotesPerYear[0].map( file => (
+                <Alert variant='success'>
+                    {file.note}
+                </Alert>
+            ))    
+        }
+        {reversedFilesPerYear.map( (filesArray) => (
             <Row className="ps-2 pe-2">
-                {filesNotesPerYear[i]?.length === 0? null: 
-                    filesNotesPerYear[0].map( file => (
-                        <Alert variant='warning'>
-                            {file.note}
-                        </Alert>
-                    ))    
-                }
                 {filesPerYear.length == 1 && filesPerYear[0]? 
                     null : 
                     <Col className="bg-info btn-info mb-3 breadcrumb rounded-pill" xs={12}>
                         {filesArray === unspecifiedYear? "Unspecified Year" : `Year 20${filesPerYear.indexOf(filesArray)}`}
                     </Col>
+                }
+
+                {filesNotesPerYear[filesPerYear.indexOf(filesArray)]?.length === 0 || filesPerYear.indexOf(filesArray) === 0? null: 
+                    filesNotesPerYear[filesPerYear.indexOf(filesArray)].map( file => (
+                        <Alert variant='warning'>
+                            {file.note}
+                        </Alert>
+                    ))    
                 }
                 {filesArray}
             </Row>

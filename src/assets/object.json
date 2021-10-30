@@ -675,6 +675,17 @@
                 },
                 {
                     "name": "note1.txt",
+                    "date": "",
+                    "note": "this is a test note to make sure note works. it is a real testing happening rn."
+                },
+                {
+                    "name": "note1.txt",
+                    "date": "20",
+                    "note": "this is a test note to make sure note works. it is a real testing happening rn."
+                },
+                {
+                    "name": "note1.txt",
+                    "date": "19",
                     "note": "this is a test note to make sure note works. it is a real testing happening rn."
                 }
             ]
