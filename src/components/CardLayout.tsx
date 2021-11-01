@@ -22,8 +22,6 @@ function sortFoldersnFiles(files: JSONobject[]) {
 
 
 export default function CardLayout({Folder, URLparams}: I_CardLayout) {
-
-    if(Folder === null) return <NothingFound />
     
     //if the object doesnt have children (i.e. a file)
     //redirect it to its parent folder, by deleting the last part of the url
@@ -56,8 +54,8 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
 
         sortFoldersnFiles(filesPerYear[i])
 
-        filesPerYear[i] = filesPerYear[i].map( js => {
-            return <ObjectCard className="mb-5" key={js.name} json={js} />
+        filesPerYear[i] = filesPerYear[i].map( (js,i) => {
+            return <ObjectCard className="mb-5" key={js.name+''+i} json={js} />
         })
     }
 
@@ -84,14 +82,14 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
      return (
         <>
         {filesNotesPerYear[0]?.length === 0? null: 
-            filesNotesPerYear[0].map( file => (
-                <Alert variant='success'>
+            filesNotesPerYear[0].map( (file, i) => (
+                <Alert variant='success' key={i}>
                     {file.note}
                 </Alert>
             ))    
         }
-        {reversedFilesPerYear.map( (filesArray) => (
-            <Row className="ps-2 pe-2">
+        {reversedFilesPerYear.map( (filesArray, i) => (
+            <Row className="ps-2 pe-2" key={i}>
                 {filesPerYear.length == 1 && filesPerYear[0]? 
                     null : 
                     <Col className="bg-info btn-info mb-3 breadcrumb rounded-pill" xs={12}>

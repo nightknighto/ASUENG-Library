@@ -12,7 +12,7 @@ export default function MainPage() {
                         <Link to="/fresh" className="MainPageButtons freshmen border border-4 border-warning" />
                     </Col>
                     <Col xs={12} sm={6}  md={3} className="d-grid mt-4">
-                        <Link to="/node_modules" className="MainPageButtons electrical border border-4 border-warning" />
+                        <Link to="/electrical" className="MainPageButtons electrical border border-4 border-warning" />
                     </Col>
                     <Col xs={12} sm={6}  md={3} className="d-grid mt-4">
                         <Link to="/mech" className="MainPageButtons mechanical border border-4 border-warning" />
