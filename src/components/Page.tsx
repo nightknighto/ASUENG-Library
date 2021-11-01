@@ -8,6 +8,7 @@ import ObjectCard from "./Card";
 import BreadCrumbComp from "./Breadcrumb";
 import CardLayout from "./CardLayout";
 import { JSONobject } from "../JSONobjectInterface";
+import ButtonLayout from "./ButtonLayout";
 
 export interface IPageProps {
 }
@@ -32,7 +33,9 @@ export default function Page (props: IPageProps) {
         console.log(URLparams)
         let selectedObj = obj
         for(let i = 1; i < URLparams.length; i++) {
-          const search = selectedObj.children.find((child) => (child.name.toLowerCase() === URLparams[i].toLowerCase()))
+          let search: JSONobject;
+          if(selectedObj.children) search = selectedObj.children.find((child) => (child.name.toLowerCase() === URLparams[i].toLowerCase()))
+          else search = selectedObj.buttons.find((button) => (button.name.toLowerCase() === URLparams[i].toLowerCase()))
           console.log(search)
           if(search) {
             selectedObj = search
@@ -54,7 +57,11 @@ export default function Page (props: IPageProps) {
       <Row className="breadcrumbCustom mt-3 pt-2">
         <BreadCrumbComp URLparams={URLparams}/>
       </Row>
-        <CardLayout Folder={processPath()} URLparams={URLparams}/>
+        {processPath()?.buttons? 
+          <ButtonLayout Folder={processPath()}/>
+          : 
+          <CardLayout Folder={processPath()} URLparams={URLparams}/>
+        }
     </Container>
   );
 }

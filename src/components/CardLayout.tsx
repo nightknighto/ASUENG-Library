@@ -116,6 +116,13 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
                 <a href={link} target='_blank' className='pe-3 ps-3'>{`link ${i+1}`}</a>
             ))}
         </Alert> : null}
+        {Folder.credits? 
+         <Alert variant='secondary'>
+            <strong className="text-primary">Credits:</strong>
+            {Folder.credits.map( (name) => (
+                {name}
+            ))}
+        </Alert> : null}
         </>
     )
     // return (
