@@ -1,10 +1,7 @@
-import { Component } from "react";
-import { Breadcrumb as RbBreadcrumb, Container, Row } from "react-bootstrap";
+import { Container, Row } from "react-bootstrap";
 
-import * as React from 'react';
-import { Link, Redirect, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { useObjectContext } from "../ObjectContext";
-import ObjectCard from "./Card";
 import BreadCrumbComp from "./Breadcrumb";
 import CardLayout from "./CardLayout";
 import { JSONobject } from "../JSONobjectInterface";
@@ -22,7 +19,7 @@ export default function Page (props: IPageProps) {
 
   let URLparams: string[] = []
   url.replace(/\/([\w|\-|.]*)/g, (s, match) => {
-    if(match != "") URLparams.push(match)
+    if(match !== "") URLparams.push(match)
     return ''
   })
 

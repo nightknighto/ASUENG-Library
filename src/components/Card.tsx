@@ -1,12 +1,9 @@
-import * as React from 'react';
 import { Col, Image } from 'react-bootstrap';
 import { JSONobject } from '../JSONobjectInterface';
 
 import pdfIcon from '../assets/pdfIcon.png'
 import folderIcon from '../assets/folderIcon.png'
-import { Link, Route, useLocation, useRouteMatch } from 'react-router-dom';
-import { ClassElement } from 'typescript';
-import Page from './Page';
+import { Link, useLocation } from 'react-router-dom';
 
 export interface ICardProps {
     json: JSONobject;
@@ -46,7 +43,7 @@ export default function ObjectCard (props: ICardProps) {
         return (
             <>
             <Col xs={6} sm={3} md={2} lg={1} className={props.className? props.className : ""}>
-                <a href={jsn.link} target={"_blank"}>
+                <a href={jsn.link} target="_blank" rel="noreferrer">
                     <Image src={icon()} fluid className='foldernfilesButtons'/>
                     <div className="ObjectCardTitle rounded ps-1 mt-1 bg-light link-dark">
                         {jsn.name.replace(/_/g, ' ')}

@@ -115,7 +115,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
                 <Alert variant='secondary'>
                     <strong className="text-primary">Source:</strong>
                     {Folder.source.map( (link, i) => (
-                        <a href={link} target='_blank' className='pe-3 ps-3'>{`link ${i+1}`}</a>
+                        <a href={link} target='_blank' rel="noreferrer" className='pe-3 ps-3'>{`link ${i+1}`}</a>
                     ))}
                 </Alert>
             </Col> : null}
@@ -124,7 +124,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
                 <Alert variant='secondary'>
                     <strong className="text-primary">Credits:</strong>
                     {Folder.credits.map( (name) => (
-                        <a target='_blank' className='pe-3 ps-3'>{name}</a>
+                        <span className='pe-3 ps-3'>{name}</span>
                     ))}
                 </Alert>
             </Col> : null}

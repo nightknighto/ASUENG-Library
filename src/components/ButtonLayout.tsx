@@ -1,6 +1,5 @@
 import { Button, Col, Row } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
-import { isNull } from "util";
 import { JSONobject } from "../JSONobjectInterface";
 
 interface I_ButtonLayout {
@@ -10,10 +9,7 @@ interface I_ButtonLayout {
 export default function ButtonLayout({Folder}: I_ButtonLayout) {
 
     let {pathname: url} = useLocation()
-    // if(url.slice(url.length-1) === '/') url = url.slice(0, url.length-1);
-    console.log(url)
-    // if(url.slice(url.length-1) === '/') url += Folder.name;
-    // else url += '/'+Folder.name;
+    if(url.slice(url.length-1) === '/') url = url.slice(0, url.length-1);
 
     return (
         <Row className="justify-content-center gap-4">
