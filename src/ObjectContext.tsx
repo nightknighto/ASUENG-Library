@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import jsonFile from './assets/elecObject.json'
+import jsonFile from './assets/object.json'
 import { JSONobject } from "./JSONobjectInterface";
 
 const objectContext = React.createContext(null)
