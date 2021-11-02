@@ -77,7 +77,7 @@ export default function Page () {
   }
 
   return (
-    <Container fluid>
+    <Container fluid className="page">
       <Row className="breadcrumbCustom mt-3 pt-2">
         <BreadCrumbComp URLparams={URLparams}/>
       </Row>

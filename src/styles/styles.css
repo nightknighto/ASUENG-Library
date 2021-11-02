@@ -83,19 +83,27 @@ a {
   font-style: italic;
 }
 
+.footerTitle {
+  font-size: larger;
+}
+
+.footerList {
+  font-size: large;
+}
+
 @media (max-width: 768px) {
   .MainPageButtons {
     height: 70px;
   }
   .mainPage {
     padding-top: 0px;
-    padding-bottom: 30px;
+    padding-bottom: 0px;
   }
   .header {
     height: "initial";
   }
   .footer {
-    height: 100px;
+    height: 30px;
     margin-top: 30px;
   }
   .logo {
@@ -130,7 +138,7 @@ a {
 
 @media (min-width: 768px) {
   .footer {
-    height: 100px;
+    height: 70px;
     margin-top: 30px;
   }
   .logo {

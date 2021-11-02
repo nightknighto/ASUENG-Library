@@ -34,14 +34,14 @@ $civilImage: url('https://www.chitkara.edu.in/wp-content/uploads/2020/04/civil.j
 $headerHeightSM: 'initial';
 $headerHeightLG: 70px;
 
-$footerHeightSM: 100px;
-$footerHeightLG: 100px;
+$footerHeightSM: 30px;
+$footerHeightLG: 70px;
 $footerMarginTopSM: 30px;
 $footerMarginTopLG: 30px;
 
 $mainPagePaddingTopSM: 0px;
 $mainPagePaddingTopLG: 10px;
-$mainPagePaddingBottomSM: 30px;
+$mainPagePaddingBottomSM: 0px;
 $mainPagePaddingBottomLG: 30px;
 
 $logoHeightSM: 50px;
@@ -62,7 +62,7 @@ $logoHeightLG: $headerHeightLG;
 }
 
 .footer {
-    position: absolute;
+    position: absolute;  
     right: 0;
     bottom: 0;
     left: 0;
@@ -115,6 +115,14 @@ $logoHeightLG: $headerHeightLG;
     font-size: large;
     font-weight: bold;
     font-style: italic;
+}
+
+.footerTitle {
+    font-size: larger;
+}
+
+.footerList {
+    font-size: large;
 }
 
 // small screen
