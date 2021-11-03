@@ -1,6 +1,7 @@
 import { Button, Container, Form, FormControl, Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.png'
+import Search from "./Search";
 
 export default function Header() {
 
@@ -44,17 +45,7 @@ export default function Header() {
                                 <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
                             </NavDropdown>
                         </Nav>
-                        <Nav className='mt-3 mt-lg-0'>
-                            <Form className="d-flex">
-                                <FormControl
-                                type="search"
-                                placeholder="Search"
-                                className="me-2"
-                                aria-label="Search"
-                                />
-                                <Button variant="outline-success">Search</Button>
-                            </Form>
-                        </Nav>
+                        <Search />
                     </Navbar.Collapse>
                 </Container>
             </Navbar>

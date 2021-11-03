@@ -21,14 +21,14 @@ export default function Footer() {
                     <Row className=" mt-3">
                         <Col xs={xsSize} md={mdSize}>
                             <h6 className={titlecls}>
-                                <i className="fas fa-gem me-3"></i>Info
+                                <i className="fas fa-gem me-3"></i>The Project
                             </h6>
                             <ul className="list-unstyled ps-3 footerList">
+                                <li><Link to='#' className={linkcls}>About</Link></li>
+                                {/* <li><Link to='' className={linkcls}>item 1</Link></li>
                                 <li><Link to='' className={linkcls}>item 1</Link></li>
                                 <li><Link to='' className={linkcls}>item 1</Link></li>
-                                <li><Link to='' className={linkcls}>item 1</Link></li>
-                                <li><Link to='' className={linkcls}>item 1</Link></li>
-                                <li><Link to='' className={linkcls}>item 1</Link></li>
+                                <li><Link to='' className={linkcls}>item 1</Link></li> */}
                             </ul>
                         </Col>
                         <Col xs={xsSize} md={mdSize}>
@@ -36,11 +36,11 @@ export default function Footer() {
                                 <i className="fas fa-gem me-3"></i>Departments
                             </h6>
                             <ul className="list-unstyled ps-3 footerList">
-                                <li><Link to='/freshmen' className={linkcls}>Freshmen</Link></li>
-                                <li><Link to='/electrical' className={linkcls}>Electrical</Link></li>
-                                <li><Link to='/mechanical' className={linkcls}>Mechanical</Link></li>
-                                <li><Link to='/architecture' className={linkcls}>Architecture</Link></li>
-                                <li><Link to='/civil' className={linkcls}>Civil</Link></li>
+                                <li><Link to='/Freshmen' className={linkcls}>Freshmen</Link></li>
+                                <li><Link to='/Electrical' className={linkcls}>Electrical</Link></li>
+                                <li><Link to='/Mechanical' className={linkcls}>Mechanical</Link></li>
+                                <li><Link to='/Architecture' className={linkcls}>Architecture</Link></li>
+                                <li><Link to='/Civil' className={linkcls}>Civil</Link></li>
                             </ul>
                         </Col>
                         <Col xs={xsSize} md={mdSize}>
@@ -49,10 +49,10 @@ export default function Footer() {
                             </h6>
                             <ul className="list-unstyled ps-3 footerList">
                                 <li><Link to='#' className={linkcls}>Upload to a Course</Link></li>
-                                <li><Link to='' className={linkcls}>Support Us</Link></li>
+                                <li><Link to='#' className={linkcls}>Support Us</Link></li>
+                                {/* <li><Link to='' className={linkcls}>item 1</Link></li>
                                 <li><Link to='' className={linkcls}>item 1</Link></li>
-                                <li><Link to='' className={linkcls}>item 1</Link></li>
-                                <li><Link to='' className={linkcls}>item 1</Link></li>
+                                <li><Link to='' className={linkcls}>item 1</Link></li> */}
                             </ul>
                         </Col>
                         <Col xs={xsSize} md={mdSize}>
