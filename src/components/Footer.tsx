@@ -15,7 +15,8 @@ export default function Footer() {
                 <Container className="">
                     <Row className="text-center">
                         <p>
-                            This website was made by a student.
+                            This website was made by Ahmed Atwa, an Electrical Sophomore student in ASU. The website is still under construction,
+                            and a lot of features aren't made yet.
                         </p>
                     </Row>
                     <Row className=" mt-3">

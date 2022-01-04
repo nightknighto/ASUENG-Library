@@ -42,7 +42,7 @@ export default function ObjectCard (props: ICardProps) {
     } else {
         return (
             <>
-            <Col xs={6} sm={3} md={2} lg={1} className={props.className? props.className : ""}>
+            <Col xs={6} sm={3} md={2} lg={2} xl={1} className={props.className? props.className : ""}>
                 <a href={jsn.link} target="_blank" rel="noreferrer">
                     <Image src={icon()} fluid className='foldernfilesButtons'/>
                     <div className="ObjectCardTitle rounded ps-1 mt-1 bg-light link-dark">

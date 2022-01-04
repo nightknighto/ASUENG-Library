@@ -155,6 +155,7 @@ input::-webkit-calendar-picker-indicator {
 
 .footerList {
   font-size: large;
+  line-break: anywhere;
 }
 
 @media (max-width: 768px) {
