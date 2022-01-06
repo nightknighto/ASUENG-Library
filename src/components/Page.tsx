@@ -23,6 +23,7 @@ export default function Page () {
     if(match !== "") URLparams.push(match)
     return ''
   })
+  document.title = URLparams[URLparams.length -1].replace(/\_/g, ' ')
 
   useEffect( () => {
     setStatus(statusConsts.loading)

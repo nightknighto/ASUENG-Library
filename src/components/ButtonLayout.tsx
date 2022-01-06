@@ -16,11 +16,12 @@ export default function ButtonLayout({Folder}: I_ButtonLayout) {
             {Folder? Folder.buttons.map( (button) => (
                 <Col xs={12} md={10} lg={4}>
                     {button.buttons? 
-                    <Link to={`${url}/${button.name}`} className="d-grid">
+                    //notice: Replace spaces with '_' in links.
+                    <Link to={`${url}/${button.name.replace(/\s/g, '_')}`} className="d-grid">
                         <Button variant="warning" size="lg">{button.name}</Button>
                     </Link>
                     :
-                    <Link to={`/${button.name}`} className="d-grid">
+                    <Link to={`/${button.name.replace(/\s/g, '_')}`} className="d-grid">
                         <Button variant="primary" size="lg">{button.name}</Button>
                     </Link>
                     }
