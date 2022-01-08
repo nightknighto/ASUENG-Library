@@ -1,7 +1,6 @@
 import { Container, Row } from "react-bootstrap";
 
 import { useLocation } from "react-router-dom";
-import { useObjectContext } from "../ObjectContext";
 import BreadCrumbComp from "./Breadcrumb";
 import CardLayout from "./CardLayout";
 import { JSONobject } from "../JSONobjectInterface";
