@@ -12,7 +12,7 @@ export default function Main() {
       <BrowserRouter basename="/ASUENG-Library">
         <Header />
         <Alert variant='success' className="mt-3 mb-0">
-            Currently available courses: (Electrical: <strong className="text-secondary">Electrical Circuits 1</strong>, <strong className="text-secondary">Logic Design</strong>) , (All Departments: <strong className="text-secondary">Probability n Statistics</strong>)
+            Currently available courses: (Electrical: <strong className="text-secondary">Electrical Circuits 1</strong>, <strong className="text-secondary">Logic Design</strong>) , (All Departments: <strong className="text-secondary">Probability n Statistics</strong>, <strong className="text-secondary">Report Writing</strong>)
         </Alert>
         <Switch>
           <Route exact path='/'>
