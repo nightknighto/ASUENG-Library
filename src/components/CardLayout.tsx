@@ -30,7 +30,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
         return <Redirect to={`/${newURL}`} />
     }
 
-    const unspecifiedYear = sortFoldersnFiles([...Folder.children].filter( file => (!file.note && !file.date)))
+    const unspecifiedYear = sortFoldersnFiles([...Folder.children].filter( file => (!file.note && !file.credits && !file.date)))
         .map( js => {
             return <ObjectCard className="mb-5" key={js.name} json={js} />
         })
@@ -38,8 +38,15 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
     let filesPerYear = []
     let filesNotesPerYear = []
     let allNotes = []
+    let insiderCredits = [] //means Credits that are inside files (credits via files)
+    
     
     allNotes = Folder.children.filter( file => (file.note))
+    insiderCredits = Folder.children.filter( file => (file.credits)) //returns the objects of {name, credits}
+
+    let TOTALCredits = [] // all available credits, from Folder or from Insider files
+    if(Folder.credits) TOTALCredits = TOTALCredits.concat(Folder.credits)
+    if(insiderCredits.length > 0) insiderCredits.forEach( obj => TOTALCredits.push( obj.credits) )
 
     if (unspecifiedYear.length > 0) filesPerYear[0] = unspecifiedYear;
 
@@ -49,7 +56,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
     for(let i = 19; i < 25; i++) {
         if (Folder.children.filter( file => (file.date && file.date == i+'')).length <= 0) continue;
 
-        filesPerYear[i] = Folder.children.filter( file => (!file.note && file.date && file.date == i+''))
+        filesPerYear[i] = Folder.children.filter( file => (!file.note && !file.credits && file.date && file.date == i+''))
         filesNotesPerYear[i] = allNotes.filter( file => (file.date && file.date == i+''))
 
         sortFoldersnFiles(filesPerYear[i])
@@ -117,11 +124,11 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
                     ))}
                 </Alert>
             </Col> : null}
-            {Folder.credits? 
+            {TOTALCredits.length > 0? 
             <Col xs={12} lg={6}>
                 <Alert variant='secondary'>
                     <strong className="text-primary">Credits:</strong>
-                    {Folder.credits.map( (name) => (
+                    {TOTALCredits.map( (name) => (
                         <span className='pe-3 ps-3'>{name}</span>
                     ))}
                 </Alert>
