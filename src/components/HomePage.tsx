@@ -2,8 +2,7 @@ import { useState } from "react"
 import { Alert, Col, Container, Row } from "react-bootstrap"
 import { Link } from "react-router-dom"
 
-export default function MainPage() {
-    const [dd, sss] = useState(true)
+export default function HomePage() {
     document.title = 'ASUENG Library'
 
     return(
