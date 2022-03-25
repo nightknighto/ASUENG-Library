@@ -1,8 +1,10 @@
+import { useContext } from "react";
 import { Alert, Col, Row } from "react-bootstrap";
 import { Redirect } from "react-router-dom";
 import { JSONobject } from "../JSONobjectInterface";
 import ObjectCard from "./Card";
 import NothingFound from "./Error components/Nothing Found";
+import { ThemeContext } from "./Main";
 
 interface I_CardLayout {
     Folder: JSONobject | null
@@ -22,6 +24,9 @@ function sortFoldersnFiles(files: JSONobject[]) {
 
 
 export default function CardLayout({Folder, URLparams}: I_CardLayout) {
+    
+    const {theme, } = useContext(ThemeContext);
+    const dark = theme == "dark"
     
     //if the object doesnt have children (i.e. a file)
     //redirect it to its parent folder, by deleting the last part of the url
@@ -90,7 +95,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
         <>
         {filesNotesPerYear[0]?.length === 0? null: 
             filesNotesPerYear[0].map( (file, i) => (
-                <Alert variant='success' key={i}>
+                <Alert variant={dark? "success" : "primary"} key={i}>
                     {file.note}
                 </Alert>
             ))    
@@ -106,7 +111,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
 
                 {filesNotesPerYear[filesPerYear.indexOf(filesArray)]?.length === 0 || filesPerYear.indexOf(filesArray) === 0? null: 
                     filesNotesPerYear[filesPerYear.indexOf(filesArray)].map( file => (
-                        <Alert variant='warning'>
+                        <Alert variant={dark? "warning" : "danger"}>
                             {file.note}
                         </Alert>
                     ))    
@@ -117,7 +122,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
         <Row>
             {Folder.source? 
             <Col xs={12} lg={6}>
-                <Alert variant='secondary'>
+                <Alert variant={dark? "secondary" : "info"}>
                     <strong className="text-primary">Source:</strong>
                     {Folder.source.map( (link, i) => (
                         <a href={link} target='_blank' rel="noreferrer" className='pe-3 ps-3'>{`link ${i+1}`}</a>
@@ -126,7 +131,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
             </Col> : null}
             {TOTALCredits.length > 0? 
             <Col xs={12} lg={6}>
-                <Alert variant='secondary'>
+                <Alert variant={dark? "secondary" : "info"}>
                     <strong className="text-primary">Credits:</strong>
                     {TOTALCredits.map( (name) => (
                         <span className='pe-3 ps-3'>{name}</span>

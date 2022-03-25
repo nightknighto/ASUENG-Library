@@ -1,16 +1,21 @@
+import { useContext } from "react";
 import { Button, Container, Form, FormControl, Image, Nav, Navbar, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import logo from '../assets/logo.png'
+import { ThemeContext } from "./Main";
 import Search from "./Search";
+import ThemeSwitch from "./ThemeSwitch";
 
 export default function Header() {
+    const {theme,} = useContext(ThemeContext);
+    const dark = theme === "dark"
 
     return(
         <div>
-            <Navbar collapseOnSelect className='header' fixed='top' expand="lg" bg="dark" variant="dark">
+            <Navbar collapseOnSelect className='header' fixed='top' expand="lg" bg={dark? "dark":"primary"} variant="dark">
                 <Container fluid>
                     <Link to='/'>
-                    <Navbar.Brand href="#home" className='fs-4 pe-3 text-warning'>
+                    <Navbar.Brand href="#home" className={`fs-${dark? "4":"3"} pe-3 text-${dark? "warning":"success"}`}>
                         <Image src={logo} className='logo' />
                         {'ASUENG Library'}
                     </Navbar.Brand>
@@ -53,6 +58,7 @@ export default function Header() {
                                 // <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item> */}
                             {/* </NavDropdown> */}
                         </Nav>
+                        <ThemeSwitch />
                         <Search />
                     </Navbar.Collapse>
                 </Container>

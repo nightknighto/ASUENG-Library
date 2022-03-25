@@ -1,5 +1,7 @@
+import { useContext } from "react";
 import { Col, Container, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "./Main";
 
 const linkcls = "link-light"
 const titlecls = "footerTitle text-uppercase fw-bold mb-4 text-success"
@@ -8,15 +10,17 @@ const xsSize = 6
 const mdSize = 3
 
 export default function Footer() {
-
+    const {theme, setTheme} = useContext(ThemeContext);
+    const dark = theme === "dark";
+    
     return (    
-        <footer className="footer">
-            <div className="bg-secondary pt-3">
+        <footer className={`footer ${dark? "" : "text-secondary"}`}>
+            <div className={`bg-${dark? "secondary" : "primary"} pt-3`}>
                 <Container className="">
                     <Row className="text-center">
                         <p>
-                            This website was made by <strong className="text-primary">Ahmed Atwa</strong>, an Electrical Sophomore student in ASU. The website is still under construction,
-                            and a lot of features haven't been made yet.
+                            This website was made by <strong className={`text-${dark? "primary":"warning"}`}>Ahmed Atwa</strong>, an Electrical Sophomore student in ASU. The website is still under construction,
+                            and a lot of features haven't been made yet. It was made using React & Typescript.
                         </p>
                     </Row>
                     <Row className=" mt-3">

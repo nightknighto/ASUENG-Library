@@ -1,11 +1,16 @@
+import { useContext } from "react";
 import { Breadcrumb } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { ThemeContext } from "./Main";
 
 interface I_BreadCrumbComp {
     URLparams: string[]
 }
 
 export default function BreadCrumbComp({URLparams}: I_BreadCrumbComp) {
+
+    const {theme, } = useContext(ThemeContext);
+    const dark = theme == "dark"
 
     const prepareHref = (par: string) => {
       let url = '/'
@@ -19,10 +24,10 @@ export default function BreadCrumbComp({URLparams}: I_BreadCrumbComp) {
     }
 
     return (
-      <Breadcrumb>
+      <Breadcrumb listProps={ {className: dark? "" : "bg-success"}}>
         {URLparams.map( (par) => (
           <Breadcrumb.Item>
-            <Link to={prepareHref(par)} className=" link-dark">{par.replace(/_/g, ' ')}</Link>
+            <Link to={prepareHref(par)} className={dark? "link-dark" : "text-black"}>{par.replace(/_/g, ' ')}</Link>
           </Breadcrumb.Item>
         ))}
       </Breadcrumb>
