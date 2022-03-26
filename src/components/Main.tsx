@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useContext } from "react";
 import { Alert } from "react-bootstrap";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
@@ -10,7 +10,6 @@ import Page from "./Page";
 export const ThemeContext = React.createContext({theme: "dark", setTheme: null});
 
 export default function Main() {
-
   const [theme, setTheme] = useState("dark")
   const coursesTextClass = theme === "dark"? "text-secondary fst-italic":"text-primary fst-italic"
 

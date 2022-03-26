@@ -1,8 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './styles/styles.css';
-import './styles/bootstrap-dark.min.css';
-import './styles/bootstrap-light.min.css';
 import '../node_modules/@fortawesome/fontawesome-free/css/all.css'
 import App from './App';
 import reportWebVitals from './unneeded/reportWebVitals';

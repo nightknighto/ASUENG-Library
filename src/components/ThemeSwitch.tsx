@@ -7,12 +7,21 @@ export default function ThemeSwitch() {
     const {theme, setTheme} = useContext(ThemeContext);
 
     console.log("here", document.styleSheets);
+    
+    let darkSheet: CSSStyleSheet = document.styleSheets[0]
+    let lightSheet: CSSStyleSheet = document.styleSheets[1]
+
+    // for(let i = 0; i < document.styleSheets.length; i++) {
+    //     if(document.styleSheets[i].title == "light") lightSheet = document.styleSheets[i]
+    //     else if(document.styleSheets[i].title == "dark") darkSheet = document.styleSheets[i]
+    // }
+
     if(theme == "dark") {
-        document.styleSheets[4].disabled = true;
-        document.styleSheets[2].disabled = false;
+        darkSheet.disabled = false;
+        lightSheet.disabled = true;
     } else {
-        document.styleSheets[4].disabled = false;
-        document.styleSheets[2].disabled = true;
+        darkSheet.disabled = true;
+        lightSheet.disabled = false;
     }
 
     return(

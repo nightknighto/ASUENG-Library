@@ -6,6 +6,7 @@ import ObjectCard from "./Card";
 import NothingFound from "./Error components/Nothing Found";
 import { ThemeContext } from "./Main";
 
+
 interface I_CardLayout {
     Folder: JSONobject | null
     URLparams: string[]
