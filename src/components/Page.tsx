@@ -3,18 +3,17 @@ import { Container, Row } from "react-bootstrap";
 import { useLocation } from "react-router-dom";
 import BreadCrumbComp from "./Breadcrumb";
 import CardLayout from "./CardLayout";
-import { JSONobject } from "../JSONobjectInterface";
+import { ProjectObject } from "../ProjectObjectInterface";
 import ButtonLayout from "./ButtonLayout";
 import { useEffect, useState } from "react";
-import ErrorHandling from "./Error components/ErrorHandling";
-import { statusConsts } from "../Constants";
+import ErrorHandling, { errorStatus } from "./Error components/ErrorHandling";
 
 
 
 export default function Page () {
   // const {dataObjects, setObject} = useObjectContext()
-  const [object , setObject] = useState<JSONobject | null>(null)
-  const [status , setStatus] = useState(statusConsts.loading)
+  const [object , setObject] = useState<ProjectObject | null>(null)
+  const [status , setStatus] = useState(errorStatus.loading)
   const { pathname: url } = useLocation()
 
   let URLparams: string[] = []
@@ -25,14 +24,14 @@ export default function Page () {
   document.title = URLparams[URLparams.length -1].replace(/\_/g, ' ')
 
   useEffect( () => {
-    setStatus(statusConsts.loading)
+    setStatus(errorStatus.loading)
     fetch('https://deadreyo.github.io/React-Project-nodeJS/dist/'+URLparams[0].toLowerCase()+'.json')
     .then( response => {
 
-      console.log(response.status)
       if(!response.ok) {
-        if(response.status === 404) setStatus(statusConsts.notFound);
-        else setStatus(response.statusText);
+        if(response.status === 404) setStatus(errorStatus.notFound);
+        // else setStatus(response.statusText);
+        else setStatus(errorStatus.error)
 
         throw new Error(response.statusText)
       }
@@ -40,34 +39,29 @@ export default function Page () {
       return response.json()
     })
     .then( body => {
-      console.log(JSON.stringify(body))
       setObject(body)
-      setStatus(statusConsts.ready)
+      setStatus(errorStatus.ready)
     })
     .catch( error => console.log('Fetch issue:', error))
 
-    function cleanUp() {setStatus(statusConsts.loading); setObject(null)}
+    function cleanUp() {setStatus(errorStatus.loading); setObject(null)}
     return cleanUp()
 
   }, [URLparams[0].toLowerCase()])
 
-  const processPath: () => JSONobject | null = () => { 
+  const processPath: () => ProjectObject | null = () => { 
 
     if(object) {
-      console.log('Success')
-      console.log(URLparams)
       let selectedObj = object
       for(let i = 1; i < URLparams.length; i++) {
-        let search: JSONobject;
-        if(selectedObj.children) search = selectedObj.children.find((child) => (child.name.toLowerCase() === URLparams[i].toLowerCase()))
-        else search = selectedObj.buttons.find((button) => (button.name.toLowerCase() === URLparams[i].toLowerCase()))
-        console.log(search)
+        let search: ProjectObject;
+        if(selectedObj.children) search = selectedObj.children.find((child) => (child.name.toLowerCase().replace(/ /g, '_') === URLparams[i].toLowerCase().replace(/ /g, '_')))
+        else search = selectedObj.buttons.find((button) => (button.name.toLowerCase() === URLparams[i].replace(/_/g, ' ').toLowerCase()))
         if(search) {
           selectedObj = search
         } else {
           return null;
         }
-        console.log('name: '+selectedObj.name)
       }
       return selectedObj
 
@@ -76,22 +70,32 @@ export default function Page () {
     return null;
   }
 
+  let processedObj = processPath();
+try{
   return (
     <Container fluid className="page">
       <Row className="breadcrumbCustom mt-3 pt-2">
         <BreadCrumbComp URLparams={URLparams}/>
       </Row>
-        {status !== statusConsts.ready?
+        {status !== errorStatus.ready?
           <ErrorHandling status={status} />
         :
           <>
-          {processPath()?.buttons? 
-            <ButtonLayout Folder={processPath()}/>
-            : 
-            <CardLayout Folder={processPath()} URLparams={URLparams}/>
+          {processedObj?
+            processedObj.buttons? 
+              <ButtonLayout Folder={processedObj}/>
+              : 
+              <CardLayout Folder={processedObj} URLparams={URLparams}/>
+          :
+            <ErrorHandling status={errorStatus.notFound} />
           }
           </>
         }
     </Container>
   );
+} catch(e) {
+  return (
+    <ErrorHandling status={errorStatus.error} />
+  )
+}
 }

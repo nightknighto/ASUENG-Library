@@ -1,5 +1,5 @@
 import { Col, Image } from 'react-bootstrap';
-import { JSONobject } from '../JSONobjectInterface';
+import { ProjectObject } from '../ProjectObjectInterface';
 
 import pdfIcon from '../assets/pdfIcon.png'
 import folderIcon from '../assets/folderIcon.png'
@@ -8,7 +8,7 @@ import { useContext } from 'react';
 import { ThemeContext } from './Main';
 
 export interface ICardProps {
-    json: JSONobject;
+    json: ProjectObject;
     className?: string
 }
 
@@ -22,7 +22,8 @@ export default function ObjectCard (props: ICardProps) {
 
     if(url.slice(url.length-1) === '/') url += jsn.name;
     else url += '/'+jsn.name;
-
+    url = url.replace(/ /g, '_')
+    
     const icon = () => {
         if(jsn.children) {
             return folderIcon

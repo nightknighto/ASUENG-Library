@@ -1,18 +1,23 @@
-import { statusConsts } from "../../Constants";
+import ErrorOccured from "./Error Occured";
 import Loading from "./Loading";
 import NothingFound from "./Nothing Found";
 
-interface I_ErrorHandling {
-    status: string;
+export enum errorStatus {
+    ready,
+    loading,
+    notFound,
+    error
 }
 
-export default function ErrorHandling({status}: I_ErrorHandling) {
+export default function ErrorHandling({status}: {status: number}) {
 
     switch(status) {
-        case statusConsts.loading: 
+        case errorStatus.loading: 
             return <Loading />
-        case statusConsts.notFound:
+        case errorStatus.notFound:
             return <NothingFound />
+        case errorStatus.error:
+            return <ErrorOccured />
         default:
             return (
                 <div><strong>{status}</strong></div>

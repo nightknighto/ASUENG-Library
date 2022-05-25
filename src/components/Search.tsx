@@ -1,21 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { Form, FormControl, Button, Nav } from "react-bootstrap";
-import { JSONobject } from "../JSONobjectInterface";
+import { ProjectObject } from "../ProjectObjectInterface";
 import Autosuggest from 'react-autosuggest';
 
 export default function Search() {
-    const [object, setObject] = useState<JSONobject[]|null>([])
+    const [object, setObject] = useState<ProjectObject[]|null>([])
 
     useEffect( () => {
         fetch('https://deadreyo.github.io/React-Project-nodeJS/dist/search.json')
     .then( response => {
 
-    //   console.log(response.status)
-    //   console.log(response.statusText)
       if(!response.ok) {
-        // if(response.status === 404) 
-        //     setStatus(statusConsts.notFound);
-        // else setStatus(response.statusText);
 
         throw response.status
       }
@@ -23,11 +18,10 @@ export default function Search() {
       return response.json()
     })
     .then( body => {
-      console.log(JSON.stringify(body))
       setObject(body)
-    //   setStatus(statusConsts.ready)
+    //   setStatus(errorStatus.ready)
     })
-    .catch( error => console.log('Search Fetch issue: '+ error))
+    .catch( error => console.log('Search Fetch issue: ', error))
     },[])
 
     return(
@@ -93,7 +87,7 @@ const renderSuggestion = suggestion => (
   </div>
 );
 
-function SearchData({data}: {data: JSONobject[]}) {
+function SearchData({data}: {data: ProjectObject[]}) {
 
     // Teach Autosuggest how to calculate suggestions for any given input value.
     const getSuggestions = value => {

@@ -5,8 +5,6 @@ import { ThemeContext } from "./Main";
 export default function ThemeSwitch() {
 
     const {theme, setTheme} = useContext(ThemeContext);
-
-    console.log("here", document.styleSheets);
     
     let darkSheet: CSSStyleSheet = document.styleSheets[0]
     let lightSheet: CSSStyleSheet = document.styleSheets[1]
