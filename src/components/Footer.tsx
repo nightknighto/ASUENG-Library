@@ -66,8 +66,9 @@ export default function Footer() {
                             </h6>
                             <ul className="list-unstyled ps-3 text-light footerList">
                                 <li><i className="fas fa-envelope me-1"/>ahmedatwa866@yahoo.com</li>
-                                <li><i className="fab fa-discord me-1"/>NightKnight#3701</li>
                                 <li><i className="fab fa-facebook me-1"/><a href="https://www.facebook.com/ahmed.atwa.96387" target="_blank" rel="noreferrer">Visit Facebook Profile</a></li>
+                                <li><i className="fab fa-linkedin me-1"/><a href="https://www.linkedin.com/in/ahmed-mohamed-atwa" target="_blank" rel="noreferrer">Visit LinkedIn Profile</a></li>
+                                <li><i className="fab fa-github me-1"/><a href="https://github.com/Deadreyo" target="_blank" rel="noreferrer">Visit Github Profile</a></li>
                                 {/* <li>item 1</li>
                                 <li>item 1</li> */}
                             </ul>
