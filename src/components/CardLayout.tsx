@@ -18,7 +18,16 @@ function sortFoldersnFiles(files: ProjectObject[]) {
     files.sort( (a,b) => {
         if(a.children && b.children) return 0;
         if(a.children) return -1;
-        else return 1;
+        if(b.children) return 1
+        else {
+            // comparison of 2 files
+            // check if initials of the files are numbers
+            let aNum = parseInt(a.name);
+            let bNum = parseInt(b.name);
+            if(isNaN(bNum)) return -1;
+            if(isNaN(aNum)) return 1;
+            return aNum - bNum;
+        }
     })
 
     return files
