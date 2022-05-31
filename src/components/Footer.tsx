@@ -22,9 +22,9 @@ export default function Footer() {
                             This website was made by <strong className={`text-${dark? "primary":"warning"}`}>Ahmed Atwa</strong>, an Electrical Sophomore student in ASU. The website is still under construction,
                             and a lot of features haven't been made yet. It was made using React & Typescript.
                         </p>
-                        <p>
+                        <strong>
                             This Term's Course Managers: Electrical - <strong className={`text-${dark? "primary":"warning"}`}>Ahmed Atwa</strong>, Mechanical - <strong className={`text-${dark? "primary":"warning"}`}>Mahmoud Ayman</strong>.
-                        </p>
+                        </strong>
                     </Row>
                     <Row className=" mt-3">
                         <Col xs={xsSize} md={mdSize}>
