@@ -19,7 +19,8 @@ export default function Main() {
         <BrowserRouter basename="/ASUENG-Library">
           <Header />
           <Alert variant={theme == "dark"? "success" : "info"} className="mt-3 mb-0">
-              Currently available courses: (Electrical: <strong className={coursesTextClass}>Sophomore Term 1</strong>, <strong className={coursesTextClass}>Sophomore Term 2</strong>) , (All Departments: <strong className={coursesTextClass}>Probability n Statistics</strong>, <strong className={coursesTextClass}>Report Writing</strong>, <strong className={coursesTextClass}>Differential Eqs</strong>)
+              Currently available courses: (Electrical: <strong className={coursesTextClass}>Sophomore Term 1</strong>, <strong className={coursesTextClass}>Sophomore Term 2</strong>) 
+              , (Mechanical: <strong className={coursesTextClass}>Sophomore Term 2</strong>) , (All Departments: <strong className={coursesTextClass}>Probability n Statistics</strong>, <strong className={coursesTextClass}>Report Writing</strong>, <strong className={coursesTextClass}>Differential Eqs</strong>)
           </Alert>
           <Switch>
             <Route exact path='/'>

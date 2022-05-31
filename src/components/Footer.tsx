@@ -22,6 +22,9 @@ export default function Footer() {
                             This website was made by <strong className={`text-${dark? "primary":"warning"}`}>Ahmed Atwa</strong>, an Electrical Sophomore student in ASU. The website is still under construction,
                             and a lot of features haven't been made yet. It was made using React & Typescript.
                         </p>
+                        <p>
+                            This Term's Course Managers: Electrical - <strong className={`text-${dark? "primary":"warning"}`}>Ahmed Atwa</strong>, Mechanical - <strong className={`text-${dark? "primary":"warning"}`}>Mahmoud Ayman</strong>.
+                        </p>
                     </Row>
                     <Row className=" mt-3">
                         <Col xs={xsSize} md={mdSize}>
@@ -76,7 +79,7 @@ export default function Footer() {
                     </Row>
                     <Row className="text-center bg-gradient mb-3">
                         <h5 className="text-black">Disclaimer: This website is not affiliated with Faculty of Engineering, ASU.
-                        None of the files hosted here are owned by me. This is just a platform for sharing files.</h5>
+                        None of the files linked here are owned by me. This is just a platform for sharing file links.</h5>
                     </Row>
                 </Container>
             </div>
