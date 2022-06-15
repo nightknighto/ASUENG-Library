@@ -16,7 +16,7 @@ interface I_CardLayout {
 //sorts objects based on whether they are folders or files
 function sortFoldersnFiles(files: ProjectObject[]) {
     files.sort( (a,b) => {
-        if(a.children && b.children) return 0;
+        if(a.children && b.children) return (a.name < b.name) ? -1 : 1;
         if(a.children) return -1;
         if(b.children) return 1
         else {
@@ -24,9 +24,13 @@ function sortFoldersnFiles(files: ProjectObject[]) {
             // check if initials of the files are numbers
             let aNum = parseInt(a.name);
             let bNum = parseInt(b.name);
-            if(isNaN(bNum)) return -1;
-            if(isNaN(aNum)) return 1;
-            return aNum - bNum;
+            if(!isNaN(aNum) || !isNaN(bNum)) {
+                if(isNaN(bNum)) return -1;
+                if(isNaN(aNum)) return 1;
+                return aNum - bNum;
+            }
+            // if not numbers, compare alphabetically
+            return (a.name < b.name) ? -1 : 1;
         }
     })
 
