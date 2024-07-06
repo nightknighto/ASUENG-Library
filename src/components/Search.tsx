@@ -7,7 +7,7 @@ export default function Search() {
     const [object, setObject] = useState<ProjectObject[]|null>([])
 
     useEffect( () => {
-        fetch('https://deadreyo.github.io/React-Project-nodeJS/dist/search.json')
+        fetch('https://nightknighto.github.io/React-Project-nodeJS/dist/search.json')
     .then( response => {
 
       if(!response.ok) {

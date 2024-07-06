@@ -25,7 +25,7 @@ export default function Page () {
 
   useEffect( () => {
     setStatus(errorStatus.loading)
-    fetch('https://deadreyo.github.io/React-Project-nodeJS/dist/'+URLparams[0].toLowerCase()+'.json')
+    fetch('https://nightknighto.github.io/React-Project-nodeJS/dist/'+URLparams[0].toLowerCase()+'.json')
     .then( response => {
 
       if(!response.ok) {
