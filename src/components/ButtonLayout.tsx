@@ -20,7 +20,7 @@ export default function ButtonLayout({Folder}: I_ButtonLayout) {
                         {button.buttons? 
                         //notice: Replace spaces with '_' in links.
                         <Link to={`${url}/${button.name.replace(/\s/g, '_')}`} className="d-grid">
-                            <Button variant="warning" size="lg">{button.name}</Button>
+                            <Button variant="primary" size="lg">{button.name}</Button>
                         </Link>
                         :
                         <Link to={`/${button.name.replace(/\s/g, '_')}`} className="d-grid">

@@ -24,7 +24,7 @@ export default function BreadCrumbComp({URLparams}: I_BreadCrumbComp) {
     }
 
     return (
-      <Breadcrumb listProps={ {className: dark? "" : "bg-success"}}>
+      <Breadcrumb listProps={ {className: dark? "" : "bg-info"}}>
         {URLparams.map( (par) => (
           <Breadcrumb.Item>
             <Link to={prepareHref(par)} className={dark? "link-dark" : "text-black"}>{par.replace(/_/g, ' ')}</Link>

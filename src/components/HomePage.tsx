@@ -7,12 +7,12 @@ export default function HomePage() {
     document.title = 'ASUENG Library'
     const {theme, } = useContext(ThemeContext);
     const dark = theme == "dark"
-    const border = `border border-4 border-${dark? "warning" : "info"}`;
+    const border = `border border-4 border-${dark? "success" : "success"}`;
 
     return(
             <Container fluid className='mainPage'>
                 <Row className="">
-                    <Alert variant={dark? "warning" : "danger"} className="">
+                    <Alert variant={dark? "primary" : "info"} className="">
                         The website is still under construction, with many features and buttons not properly made yet. Only a limited
                         number of Courses are available right now. Thanks for your understanding.
                     </Alert>

@@ -89,7 +89,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
             <>
             {Folder.note && Folder.note.length > 0?
                 Folder.note.filter(n => !n.date).map( (note, i) => (
-                    <Alert variant={dark? "success" : "primary"} key={i}>
+                    <Alert variant={dark? "primary" : "primary"} key={i}>
                         {note.message}
                     </Alert>
                 ))   
@@ -141,7 +141,7 @@ export default function CardLayout({Folder, URLparams}: I_CardLayout) {
                     
                     {Folder.note && Folder.note.length > 0?
                         Folder.note.filter(n => n.date && n.date == `${filesPerYear.indexOf(filesArray)}`).map( (note, i) => (
-                            <Alert variant={dark? "warning" : "danger"} key={i}>
+                            <Alert variant={dark? "primary" : "primary"} key={i}>
                                 {note.message}
                             </Alert>
                         ))   

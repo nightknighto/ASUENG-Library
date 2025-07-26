@@ -15,7 +15,7 @@ export default function Header() {
             <Navbar collapseOnSelect className='header' fixed='top' expand="lg" bg={dark? "dark":"primary"} variant="dark">
                 <Container fluid>
                     <Link to='/'>
-                    <Navbar.Brand href="#home" className={`fs-${dark? "4":"3"} pe-3 text-${dark? "warning":"success"}`}>
+                    <Navbar.Brand href="#home" className={`fs-${dark? "4":"3"} pe-3 text-${dark? "primary":"info"}`}>
                         <Image src={logo} className='logo' />
                         {'ASUENG Library'}
                     </Navbar.Brand>

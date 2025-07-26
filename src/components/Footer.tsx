@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 import { ThemeContext } from "./Main";
 
 const linkcls = "link-light"
-const titlecls = "footerTitle text-uppercase fw-bold mb-4 text-success"
 
 const xsSize = 6
 const mdSize = 3
@@ -12,8 +11,9 @@ const mdSize = 3
 export default function Footer() {
     const {theme, setTheme} = useContext(ThemeContext);
     const dark = theme === "dark";
-    
-    return (    
+    const titlecls = `footerTitle text-uppercase fw-bold mb-4 ${dark ? "text-primary" : "text-info"}`;
+
+    return (
         <footer className={`footer ${dark? "" : "text-secondary"}`}>
             <div className={`bg-${dark? "secondary" : "primary"} pt-3`}>
                 <Container className="">

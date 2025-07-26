@@ -27,7 +27,7 @@ export default function ThemeSwitch() {
             <ToggleButton key={1} id="radio-dark" value="dark" type="radio" variant="outline-success" name="theme"
                 checked = {theme === "dark"} onClick={() => {setTheme("dark")}}
                 style={{marginBottom: "1px",}}>Dark</ToggleButton>
-            <ToggleButton key={2} id="radio-light" value="light" type="radio" variant="outline-danger" name="theme"
+            <ToggleButton key={2} id="radio-light" value="light" type="radio" variant="outline-warning" name="theme"
                 checked = {theme === "light"} onClick={() => {setTheme("light")}}>Light</ToggleButton>
         </ButtonGroup>
     )
